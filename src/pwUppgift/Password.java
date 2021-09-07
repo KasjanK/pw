@@ -6,32 +6,25 @@ public class Password {
 
 	public static void main(String[] args) {
 		String password = "elefantöra";
-		int PASS_TEST = 4;
-		
+		String pass;
 		Scanner scanner = new Scanner(System.in);
-		
-		boolean passCheck = false;
-		int tryCount = 1;
-		
-		System.out.println("Please enter password. You have 3 tries.");
-		
-		while(!passCheck) {
-			if (tryCount >= PASS_TEST) {
-				passCheck = true;
-				System.out.println("Locked");
+
+		System.out.println("Enter Your Password:");
+		pass = scanner.nextLine();
+
+		if (pass.equals(password)) {
+			System.out.println("Access granted!");
+		} else {
+			for (int i = 0; i < 2; i++) {
+				System.out.println("Enter Your Password:");
+				pass = scanner.nextLine();
+				if (pass.equals(password)) {
+					System.out.println("Access granted!");
+				}
 			}
-			
-			String pass = scanner.nextLine();
-			
-			if(pass.equalsIgnoreCase(password)) {
-				System.out.println("Right");
-				passCheck = false;
-			} else {
-				System.out.println("Wrong. (" + tryCount + "/3)");
-				tryCount++;
-			}
+			System.out.println("Access Denied!");
+			scanner.close();
 		}
-		
 	}
 
 }
